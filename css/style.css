@@ -2,10 +2,18 @@
 
 :root {
     --negro: #111;
-    /* --negro-amarillento: rgb(58, 50, 0); */
-    --negro-amarillento: rgb(21, 18, 0);
+    --negro-casi-transparente: #11111150;
+    --negro-amarillento: #252006;
+    --negro-azulado: #09002d;
+    --negro-verde: #002c08;
     --blanco: #fff;
     --dorado: #FD0;
+    --dorado-marron: #817908;
+    --marron: #622b01;
+    --marron-oscuro:#371800;
+    --verde: #3bff04;
+    --verde-oscuro:#0a6300;
+    --rojo: #F30;
 }
 
 html {
@@ -88,7 +96,7 @@ section.hero_left > h2 {
     width: 75%;
     text-align: center;
     color: var(--dorado);
-    text-shadow: 1px 1px 2px #111, 0 0 .8rem #FD0;
+    text-shadow: 1px 1px 2px var(--negro), 0 0 .8rem var(--dorado);
 }
 
 section.hero_left > h2:nth-child(2){
@@ -99,8 +107,272 @@ section.hero_right > img {
     width: 270px;
     height: 400px;
     object-fit: contain;
-    filter: drop-shadow(0 0 .2rem #FD0);
+    filter: drop-shadow(0 0 .2rem var(--dorado));
 }
+
+/* ##################################### MAIN ##################################### */
+
+main.contenedor_cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    justify-items: center;
+    gap: 2rem;
+    padding: 4rem 2rem 2rem;
+}
+
+section.card {
+    position: relative;
+    width: 220px;
+    height: 320px;
+    display: grid;
+    place-items: center;
+    background-color: var(--dorado);
+    opacity: .7;
+    border: 2px solid transparent;
+    border-radius: 1rem;
+    box-shadow: inset 0 0 4rem .5rem var(--negro-amarillento);
+    color: var(--negro);
+    cursor: pointer;
+}
+
+section.card:hover {
+    background-image: linear-gradient(to top, var(--negro),var(--negro-azulado));
+    box-shadow: inset 0 0 5rem 2rem var(--negro), var(--dorado) 1px 0 1rem;
+    border: 2px solid var(--dorado);
+    color: var(--blanco);
+}
+
+section.card > p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 4rem;
+}
+
+section.card:hover > p {
+    text-shadow: var(--dorado) 1px 0 1rem;
+}
+
+.estrellas {
+    position: relative;
+    top: -10%;
+    width: 100%;
+    height: 80%;
+    display: none;
+}
+
+section.card:hover .estrellas {
+    display: block;
+}
+
+.estrellas > span.estrella {
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    width: 20px;
+    height: 20px;
+    background-color: var(--blanco);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    transform: scale(.3);
+}
+
+.estrellas > span.estrella:nth-child(2){
+    top: 15%;
+    left: 45%;
+}
+
+.estrellas > span.estrella:nth-child(3){
+    top: 7%;
+    left: 75%;
+}
+
+.estrellas > span.estrella:nth-child(4){
+    top: 23%;
+    left: 65%;
+}
+
+.estrellas > span.estrella:nth-child(5){
+    top: 3%;
+    left: 15%;
+}
+
+.estrellas > span.estrella:nth-child(6){
+    top: 27%;
+    left: 10%;
+    opacity: .75;
+}
+
+.estrellas > span.estrella:nth-child(7){
+    top: 32%;
+    left: 90%;
+    opacity: .75;
+}
+
+.estrellas > span.estrella:nth-child(8){
+    top: 35%;
+    left: 45%;
+    opacity: .75;
+}
+
+.estrellas > span.estrella:nth-child(9){
+    top: 45%;
+    left: 18%;
+    opacity: .5;
+}
+
+.estrellas > span.estrella:nth-child(10){
+    top: 50%;
+    left: 68%;
+    opacity: .5;
+}
+
+.estrellas > span.estrella:nth-child(11){
+    top: 54%;
+    left: 88%;
+    opacity: .5;
+}
+
+.estrellas > span.estrella:nth-child(12){
+    top: 55%;
+    left: 8%;
+    opacity: .5;
+}
+
+.estrellas > span.estrella:nth-child(13){
+    top: 5%;
+    left: 58%;
+}
+
+.estrellas > span.estrella:nth-child(14){
+    top: 50%;
+    left: 50%;
+    opacity: .3;
+}
+
+section.card > .arbolito {
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    z-index: 100;
+    transform: translate(-50%,-50%);
+}
+
+section.card:hover > .arbolito > .arbol {
+    position: relative;
+    height: 100px;
+    width: 75px;
+    background-image: radial-gradient(var(--verde),var(--verde-oscuro), var(--negro-verde));
+    clip-path: polygon(50% 0,60% 15%, 70% 25%, 65% 25%, 80% 45%, 75% 45%, 90% 70%, 85% 70%,100% 100%,0% 100%, 15% 70%, 10% 70%,25% 45%,20% 45%,35% 25%, 30% 25%, 40% 15%, 50% 0);
+    box-shadow: inset 0 0 2rem 30rem var(--negro-casi-transparente);
+}
+
+section.card:hover > .arbolito > .tronco {
+    position: absolute;
+    bottom: -28.7%;
+    left: 50%;
+    z-index: -1;
+    width: 15px;
+    height: 19.5px;
+    background-image: radial-gradient(var(--marron),var(--marron-oscuro));
+    transform: translate(-50%,-50%);
+}
+
+section.card:hover > .arbolito > .arbol > .lucecita {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+
+section.card:hover > .arbolito > .arbol > .lucecita_roja {
+    background-color: var(--rojo);
+    animation: encender_rojas 1s alternate infinite;
+}
+
+section.card:hover > .arbolito > .arbol > .lucecita_blanca {
+    background-color: var(--blanco);
+    animation: encender_blancas 1s alternate infinite 1s;
+}
+
+section.card:hover > .arbolito > .arbol > .lucecita:first-child{
+    top: 60%;
+    left: 35%;
+}
+
+section.card:hover > .arbolito > .arbol > .lucecita:nth-child(2){
+    top: 76%;
+    left: 75%;
+}
+
+section.card:hover > .arbolito > .arbol > .lucecita:nth-child(3){
+    top: 26%;
+    left: 50%;
+}
+
+section.card:hover > .arbolito > .arbol > .lucecita:nth-child(4) {
+    top: 80%;
+    left: 35%;
+}
+
+section.card:hover > .arbolito > .arbol > .lucecita:nth-child(5){
+    top: 50%;
+    left: 60%;
+}
+
+section.card:hover > .arbolito > .arbol > .lucecita:nth-child(6){
+    top: 70%;
+    left: 50%;
+}
+
+section.card:hover > .arbolito > .arbol > .lucecita:nth-child(7) {
+    top: 40%;
+    left: 40%;
+}
+
+section.card:hover > .arbolito > .arbol > .lucecita:nth-child(8){
+    top: 90%;
+    left: 75%;
+}
+
+section.card:hover > .arbolito > .arbol > .lucecita:nth-child(9){
+    top: 90%;
+    left: 20%;
+}
+
+@keyframes encender_rojas {
+    from {
+        box-shadow: 0 0 0rem var(--rojo);
+    }
+    to {
+        box-shadow: 0 0 1rem var(--rojo);
+        transform: scale(1.4);
+    }
+}
+@keyframes encender_blancas {
+    from {
+        box-shadow: 0 0 0rem var(--blanco);
+    }
+    to {
+        box-shadow: 0 0 1rem var(--blanco);
+        transform: scale(1.3);
+    }
+}
+
+section.card:hover > .arbolito > span.estrella {
+    position: absolute;
+    top: -10%;
+    left: 36.5%;
+    z-index: 220;
+    width: 20px;
+    height: 20px;
+    background-color: var(--dorado);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    transform: scale(1.25);
+    box-shadow: 0 0 2rem var(--dorado);
+}
+
+/* ##################################### MEDIA QUERIES ##################################### */
 
 @media screen and (max-width: 992px) {
     
@@ -117,6 +389,20 @@ section.hero_right > img {
         font-size: 2.25rem;
         width: 100%;
         padding: 0 1rem;
+    }
+
+    main.contenedor_cards {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+    
+    section.card {
+        width: 180px;
+        height: 280px;
+    }
+
+    section.card > .arbolito {
+        bottom: -17.5%;
+        transform: translate(-50%,-50%) scale(.75);
     }
 }
 
@@ -138,5 +424,20 @@ section.hero_right > img {
     section.hero_right > img {
         width: 220px;
         height: 300px;
+    }
+
+    main.contenedor_cards {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: .5rem;
+    }
+    
+    section.card {
+        width: 120px;
+        height: 200px;
+    }
+
+    section.card > .arbolito {
+        bottom: -33%;
+        transform: translate(-50%,-50%) scale(.5);
     }
 }
