@@ -1,0 +1,137 @@
+:root {
+    --rojo-code: #d0463f;
+    --verde-code: #9bd75e;
+    --morado-code: #c36088;
+    --azul-code: #6f86f7;
+    --amarillo-code: #ccaa20;
+    --gris-code: #7a7a7a; 
+}
+
+section.hero_right {
+    position: relative;
+    height: 90%;
+    margin-top: 4rem;
+    align-self: flex-start;
+}
+
+section.hero_right img{
+    position: sticky;
+    top: 0;
+}
+
+section.texto_reto {
+    width: 100%;
+    padding: 2rem;
+}
+
+section.texto_reto > p {
+    line-height: 1.5;
+    margin-bottom: .75rem;
+}
+
+section.texto_reto > p > span {
+    color: var(--dorado);
+}
+
+code.solucion_reto {
+    width: 100%;
+}
+
+code > pre {
+    width: 100%;
+    padding: 2rem;
+    background-color: var(--negro);
+    text-align: left;
+}
+
+span.morado {
+    color: var(--morado-code);
+}
+
+span.verde {
+    color: var(--verde-code);
+}
+
+span.rojo {
+    color: var(--rojo-code);
+}
+
+span.azul {
+    color: var(--azul-code);
+}
+
+span.amarillo {
+    color: var(--amarillo-code);
+}
+
+span.gris {
+    color: var(--gris-code);
+}
+
+main {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+h2.titulo {
+    width: 75%;
+    font-size: 3.5rem;
+    text-align: center;
+    color: var(--dorado);
+    text-shadow: 1px 1px 2px var(--negro), 0 0 .8rem var(--dorado);
+}
+
+@media screen and (max-width: 768px) {
+    section.hero {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    
+    section.hero_right {
+        margin-top: 4rem;
+        align-self: center;
+    }
+
+    code, pre {
+        overflow-x: auto;
+    }
+
+    pre::-webkit-scrollbar,
+    pre::-webkit-scrollbar {
+        height: 7px;
+        background-color: var(--negro);
+    }
+    
+    pre::-webkit-scrollbar-thumb,
+    pre::-webkit-scrollbar-thumb {
+        background-color: var(--dorado);
+        border-radius: .5rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    h2.titulo {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    main {
+        padding: 2rem 1rem;
+    }
+    section.texto_reto {
+        width: 90%;
+        padding: 2rem 0;
+    }
+
+    code > pre {
+        width: 100%;
+        padding: 1rem;
+        background-color: var(--negro);
+        text-align: left;
+        font-size: .75rem;
+    }
+}

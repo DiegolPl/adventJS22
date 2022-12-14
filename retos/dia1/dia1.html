@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Día 1</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/retos.css">
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <a href="../../index.html">advent<span>js</span></a>
+        </nav>
+        <section class="hero">
+            <section class="hero_left">
+                <h2 class="subtitulo">Día 1</h2>
+                <section class="texto_reto">
+                    <p>Este año los elfos han comprado una máquina que envuelve regalos. Pero… ¡no viene programada! Necesitamos crear un algoritmo que le ayude en la tarea.</p>
+                    <p>A la máquina se le pasa un array con los regalos. Cada regalo es un string. Necesitamos que la máquina envuelva cada regalo en papel de regalo y lo coloque en un array de regalos envueltos.</p>
+                    <p>El papel de regalo es el símbolo <span>*</span> y para envolver un regalo se coloca el símbolo <span>*</span> de forma que rodee totalmente al string por todos los lados. Por ejemplo:</p>
+                    <code>
+                        <pre><span class="morado">const</span> <span class="rojo">gifts</span> = <span class="amarillo">[</span><span class="verde">'cat'</span>, <span class="verde">'game'</span>, <span class="verde">'socks'</span><span class="amarillo">]</span>
+<span class="morado">const</span> <span class="rojo">wrapped</span> = <span class="azul">wrapping</span><span class="amarillo">(</span>gifts<span class="amarillo">)</span>
+
+console.<span class="azul">log</span><span class="amarillo">(</span>wrapped<span class="amarillo">)</span>
+
+<span class="comment">/* [
+"*****\n*cat*\n*****",
+"******\n*game*\n******",
+"*******\n*socks*\n*******"
+] */</span>
+                        </pre>
+                    </code>
+                    <p>Como ves, el papel de regalo envuelve el string. Por arriba y por abajo, para no dejar ningún hueco, las esquinas también están cubiertas por el papel de regalo.</p>
+                    <p><span>Nota:</span> El carácter <span>\n</span> representa un salto de línea.</p>
+                    <p><span>¡Ojo!</span> Asegúrate que pones el número correcto de <span>*</span> para envolver completamente el string. Pero no demasiados. Sólo los necesarios para cubrir el string.</p>
+                    <p>Ah, <span>y no modifiques (mutes) el array original.</span></p>
+                </section>
+            </section>
+            <section class="hero_right">
+                <img src="../../images/christmas_tree_removebg.png" alt="Imagen de arbol de navidad estilo cartoon">
+            </section>
+        </section>
+    </header>
+    <main>
+        <h2 class="titulo">Solución</h2>
+        <code class="solucion_reto">
+            <pre><span class="morado">function</span> <span class="azul">wrapping</span><span class="amarillo">(</span>gifts<span class="amarillo">)</span><span class="amarillo">{</span>
+    <span class="morado">let</span> <span class="rojo">regalosEnvueltos</span> = gifts.<span class="azul">map</span><span class="amarillo">(</span>regalo <span class="amarillo">=> {</span>
+        <span class="morado">let</span> <span class="rojo">cantidadPapel</span> = regalo.length <span class="amarillo">+</span> 2;
+        <span class="morado">let</span> <span class="rojo">envolturaLateral</span> = <span class="verde">'*'</span>.<span class="span azul">repeat</span><span class="amarillo">(</span>cantidadPapel<span class="amarillo">)</span>;
+        <span class="azul">return `</span><span class="amarillo">${</span>envolturaLateral<span class="amarillo">}</span><span class="azul">\n</span><span class="verde">*</span><span class="amarillo">${</span>regalos<span class="amarillo">}</span><span class="verde">*</span><span class="azul">\n</span><span class="amarillo">${</span>envolturaLateral<span class="amarillo">}</span><span class="azul">`</span>
+        <span class="amarillo">})</span>
+    <span class="azul">return</span> regalosEnvueltos;
+<span class="amarillo">}</span>
+
+            </pre>
+        </code>
+    </main>
+    <script src="dia1.js"></script>
+</body>
+</html>
