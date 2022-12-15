@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Día 2</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/retos.css">
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <a href="../../index.html">advent<span>js</span></a>
+        </nav>
+        <section class="hero">
+            <section class="hero_left">
+                <h2 class="subtitulo">Día 2</h2>
+                <section class="texto_reto">
+                    <p>Un millonario ha comprado una red social y no trae buenas noticias. Ha anunciado que <span class="amarillo">cada vez que una jornada de trabajo se pierde por un día festivo</span>, habrá que compensarlo con <span class="amarillo">dos horas extra otro día de ese mismo año</span>.</p>
+                    <p>Obviamente la gente que trabaja en la empresa no le ha hecho ni pizca de gracia y están <span class="amarillo">preparando un programa que les diga el número de horas extras que harían</span> en el año si se aplicara la nueva norma.</p>
+                    <p>Al ser trabajo de oficina, su horario laboral es de <span class="amarillo">lunes a viernes</span>. Así que sólo tienes que preocuparte de los días festivos que caen en esos días.</p>
+                    <p>Dado un año y un array con las fechas de los días festivos, devuelve el número de horas extra que se harían ese año:</p>
+                    <code>
+                        <pre><span class="morado">const</span> <span class="rojo">year</span> = 2022
+<span class="morado">const</span> <span class="rojo">holidays</span> = <span class="amarillo">[</span><span class="verde">'01/06'</span>, <span class="verde">'04/01'</span>, <span class="verde">'12/25'</span><span class="amarillo">]</span> <span class="gris">// formato MM/DD</span>
+
+<span class="gris">// 01/06 es el 6 de enero, jueves. Cuenta.</span>
+<span class="gris">// 04/01 es el 1 de abril, un viernes. Cuenta.</span>
+<span class="gris">// 12/25 es el 25 de diciembre, un domingo. No cuenta.</span>
+
+<span class="azul">countHours</span><span class="amarillo">(</span>year, holidays<span class="amarillo">)</span><span class="gris">// 2 días -> 4 horas extra en el año</span>
+
+                        </pre>
+                    </code>
+                    <p>Cosas a tener en cuenta y consejos:</p>
+                    <ul class="lista_texto">
+                        <li class="amarillo">El año puede ser bisiesto. Haz las comprobaciones que necesitas para ello, si fuese necesario.</li>
+                        <li class="amarillo">Aunque el 31 de diciembre sea festivo, las horas extra se harán el mismo año y no el siguiente.</li>
+                        <li class="amarillo">El método <b>Date.getDay()</b> te devuelve el día de la semana de una fecha. El 0 es domingo, el 1 es lunes, etc.</li>
+                    </ul>
+                </section>
+            </section>
+            <section class="hero_right">
+                <img src="../../images/christmas_tree_removebg.png" alt="Imagen de arbol de navidad estilo cartoon">
+            </section>
+        </section>
+    </header>
+    <main>
+        <h2 class="titulo">Solución</h2>
+        <code class="solucion_reto">
+            <pre><span class="morado">function</span> <span class="azul">countHours</span><span class="amarillo">(</span>year, holidays<span class="amarillo">)</span><span class="amarillo">{</span>
+    <span class="morado">let</span> <span class="rojo">cantidadHorasExtras</span> = 0;
+    <span class="azul">for</span><span class="amarillo">(</span><span class="morado">let</span> i = 0; i &lt; holidays.length; i++<span class="amarillo">)</span><span class="morado">{</span>
+        <span class="morado">let</span> <span class="rojo">fecha</span> = <span class="morado">new</span> <span class="azul">Date</span><span class="amarillo">(</span>holidays<span class="amarillo">[</span>i<span class="amarillo">]</span> + <span class="verde">'+'</span> + year<span class="amarillo">)</span>
+        <span class="azul">if</span><span class="amarillo">(</span>fecha<span class="azul">.getDay</span><span class="morado">()</span> &gt; 0 <span class="morado">&&</span> fecha<span class="azul">.getDay</span><span class="morado">()</span> &lt; 6<span class="amarillo">)</span><span class="azul">{</span>
+            cantidadHorasExtras <span class="morado">+=</span> 2;
+        <span class="azul">}</span>
+    <span class="morado">}</span>
+    <span class="azul">return</span> cantidadHorasExtras;
+<span class="amarillo">}</span>
+
+            </pre>
+        </code>
+    </main>
+    <script src="dia2.js"></script>
+</body>
+</html>
