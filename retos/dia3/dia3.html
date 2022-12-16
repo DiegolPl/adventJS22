@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Día 3</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/retos.css">
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <a href="../../index.html">advent<span>js</span></a>
+        </nav>
+        <section class="hero">
+            <section class="hero_left">
+                <h2 class="subtitulo">Día 3</h2>
+                <section class="texto_reto">
+                    <p>Tienes una caja de regalos de Navidad que Santa Claus quiere entregar a los niños. <span class="amarillo">Cada regalo está representado por una cadena</span>. Santa Claus tiene un trineo que puede llevar un <span class="amarillo">peso limitado</span>, y cada regalo dentro de la caja tiene un peso que es igual al número de letras en el nombre del regalo.</p>
+                    <p>Santa Claus también tiene una lista de renos que pueden ayudarlo a entregar los regalos. Cada reno tiene un <span class="amarillo">límite de peso máximo</span> que puede llevar. El límite de peso máximo de cada reno es <span class="amarillo">igual a dos veces el número de letras en su nombre.</span></p>
+                    <p>Tu tarea es implementar una función <b>distributeGifts(packOfGifts, reindeers)</b> que recibe una caja de regalos y una lista de renos y devuelve el número máximo de cajas de estos regalos que Santa Claus puede entregar a los niños. <span class="amarillo">Las cajas de regalos no se pueden dividir.</span></p>
+                    <code>
+                        <pre><span class="morado">const</span> <span class="rojo">packOfGifts</span> = <span class="amarillo">[</span><span class="verde">'book'</span>, <span class="verde">'doll'</span>, <span class="verde">'ball'</span><span class="amarillo">]</span>
+<span class="morado">const</span> <span class="rojo">reindeers</span> = <span class="amarillo">[</span><span class="verde">'dasher'</span>, <span class="verde">'dancer'</span><span class="amarillo">]</span>
+
+<span class="gris">// el pack de regalos pesa 4 + 4 + 4 = 12</span>
+<span class="gris">// los renos pueden llevar (2 * 6) + (2 * 6) = 24</span>
+<span class="gris">// por lo tanto, Santa Claus puede entregar 2 cajas de regalos</span>
+
+<span class="azul">distributeGifts</span><span class="amarillo">(</span>packOfGifts, reindeers<span class="amarillo">)</span><span class="gris"> // 2 </span>
+
+                        </pre>
+                    </code>
+                    <p>Cosas a tener en cuenta:</p>
+                    <ul class="lista_texto">
+                        <li class="amarillo">Las cajas de regalos no se pueden dividir.</li>
+                        <li class="amarillo">Los nombres de los regalos y los renos siempre serán mayores que 0.</li>
+                    </ul>
+                </section>
+            </section>
+            <section class="hero_right">
+                <img src="../../images/christmas_tree_removebg.png" alt="Imagen de arbol de navidad estilo cartoon">
+            </section>
+        </section>
+    </header>
+    <main>
+        <h2 class="titulo">Solución</h2>
+        <code class="solucion_reto">
+            <pre><span class="morado">function</span> <span class="azul">distributeGifts</span><span class="amarillo">(</span>packOfGifts, reindeers<span class="amarillo">)</span><span class="amarillo">{</span>
+    <span class="morado">let</span> <span class="rojo">pesoPack</span> = 0;
+    <span class="morado">let</span> <span class="rojo">pesoMax</span> = 0;
+
+    packOfGifts.<span class="azul">forEach</span><span class="amarillo">(</span><span class="rojo">gift</span> <span class="morado">=&gt; {</span>
+        pesoPack <span class="morado">+=</span> gift.length
+    <span class="morado">}</span><span class="amarillo">)</span>
+    
+    reindeers.<span class="azul">forEach</span><span class="amarillo">(</span><span class="rojo">reno</span> <span class="morado">=&gt; {</span>
+        pesoMax <span class="morado">+=</span> reno.length * 2
+    <span class="morado">}</span><span class="amarillo">)</span>
+        
+    <span class="azul">return</span> Math.<span class="azul">floor</span><span class="amarillo">(</span>pesoMax <span class="morado">/</span> pesoPack<span class="amarillo">)</span>
+<span class="amarillo">}</span>
+
+            </pre>
+        </code>
+    </main>
+    <script src="dia3.js"></script>
+</body>
+</html>
