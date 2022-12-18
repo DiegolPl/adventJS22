@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Día 4</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/retos.css">
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <a href="../../index.html">advent<span>js</span></a>
+        </nav>
+        <section class="hero">
+            <section class="hero_left">
+                <h2 class="subtitulo">Día 4</h2>
+                <section class="texto_reto">
+                    <p>Santa Claus necesita hacer una revisión de sus cajas de regalos para asegurarse de que puede empaquetarlas todas en su trineo. Cuenta con una serie de <span class="amarillo">cajas de diferentes tamaños, que se caracterizan por su longitud, anchura y altura.</span></p>
+                    <p>Tu tarea es escribir <span class="amarillo">una función</span> que,<span class="amarillo"> dada una lista de cajas con sus tamaños</span>, determine si es posible <span class="amarillo">empaquetar todas las cajas en una sola de manera que cada caja contenga a otra</span> (que a su vez contenga a otra, y así sucesivamente).</p>
+                    <p>Cada caja representa sus medidas con un objeto. Por ejemplo: <b>{l: 2, w: 3, h: 2}</b>. Esto significa que la caja tiene una longitud de 2, una anchura de 3 y una altura de 2.</p>
+                    <p>Una caja entra en otra caja si todos los lados de la primera son menores a los lados de la segunda. <span class="amarillo">Los elfos nos han dicho que las cajas no se pueden rotar</span>, así que no se puede poner una caja de 2x3x2 en una caja de 3x2x2. Veamos unos ejemplos:</p>
+                    <code>
+                        <pre><span class="azul">fitsInOneBox</span><span class="amarillo">([</span>
+    <span class="amarillo">{</span> l: 1, w: 1, h:1 <span class="amarillo">}</span>,
+    <span class="amarillo">{</span> l: 2, w: 2, h:2 <span class="amarillo">}</span>
+<span class="amarillo">])</span> <span class="gris">// true</span> 
+                        </pre>
+                    </code>
+                    <p>En el ejemplo anterior, la caja más pequeña entra en la caja más grande. Por lo tanto, es posible empaquetar todas las cajas en una sola. Ahora veamos un caso que no:</p>
+                    <code>
+                        <pre><span class="morado">const</span> <span class="rojo">boxes</span> = <span class="amarillo">[</span>
+    <span class="amarillo">{</span> l: 1, w: 1, h:1 <span class="amarillo">}</span>,
+    <span class="amarillo">{</span> l: 2, w: 2, h:2 <span class="amarillo">}</span>,
+    <span class="amarillo">{</span> l: 3, w: 1, h:3 <span class="amarillo">}</span>
+<span class="amarillo">]</span>
+
+<span class="azul">fitsInOneBox</span><span class="amarillo">(</span>boxes<span class="amarillo">)</span> <span class="gris">// false</span> 
+                        </pre>
+                    </code>
+                    <p>En el ejemplo anterior, la caja más pequeña entra en la caja del medio, pero la caja del medio no entra en la caja más grande. Por lo tanto, no es posible empaquetar todas las cajas en una sola.</p>
+                    <p>Ten en cuenta que las cajas pueden no venir en orden:</p>
+                    <code>
+                        <pre><span class="morado">const</span> <span class="rojo">boxes</span> = <span class="amarillo">[</span>
+    <span class="amarillo">{</span> l: 1, w: 1, h:1 <span class="amarillo">}</span>,
+    <span class="amarillo">{</span> l: 3, w: 3, h:3 <span class="amarillo">}</span>,
+    <span class="amarillo">{</span> l: 2, w: 2, h:2 <span class="amarillo">}</span>
+<span class="amarillo">]</span>
+
+<span class="azul">fitsInOneBox</span><span class="amarillo">(</span>boxes<span class="amarillo">)</span> <span class="gris">// true</span> 
+                        </pre>
+                    </code>
+                    <p>En el ejemplo anterior, la primer caja cabe en la tercera, y la tercera en la segunda. Por lo tanto, es posible empaquetar todas las cajas en una sola.</p>
+                    <p>Cosas a tener en cuenta:</p>
+                    <ul class="lista_texto">
+                        <li class="amarillo">Las cajas no se pueden rotar ya que los elfos nos han dicho que la máquina no está preparada.</li>
+                        <li class="amarillo">Las cajas pueden venir desordenadas de tamaño.</li>
+                        <li class="amarillo">Las cajas no son siempre cuadradas, pueden ser rectangulares.</li>
+                    </ul>
+                </section>
+            </section>
+            <section class="hero_right">
+                <img src="../../images/christmas_tree_removebg.png" alt="Imagen de arbol de navidad estilo cartoon">
+            </section>
+        </section>
+    </header>
+    <main>
+        <h2 class="titulo">Solución</h2>
+        <code class="solucion_reto">
+            <pre><span class="morado">function</span> <span class="azul">fitsInOneBox</span><span class="amarillo">(</span>boxes<span class="amarillo">)</span><span class="amarillo">{</span>
+    <span class="morado">let</span> <span class="rojo">sortBoxes</span> = boxes.<span class="azul">sort</span><span class="amarillo">(</span><span class="morado">(</span><span class="rojo">a</span>,<span class="rojo">b</span><span class="morado">) =></span> a.h - b.h <span class="amarillo">)</span>
+    <span class="rojo">sortBoxes</span> = boxes.<span class="azul">sort</span><span class="amarillo">(</span><span class="morado">(</span><span class="rojo">a</span>,<span class="rojo">b</span><span class="morado">) =></span> a.w - b.w <span class="amarillo">)</span>
+    <span class="rojo">sortBoxes</span> = boxes.<span class="azul">sort</span><span class="amarillo">(</span><span class="morado">(</span><span class="rojo">a</span>,<span class="rojo">b</span><span class="morado">) =></span> a.l - b.l <span class="amarillo">)</span>
+
+    <span class="azul">for</span><span class="amarillo">(</span><span class="morado">let</span> i = 0; i &lt; boxes.length; i++<span class="amarillo">)</span><span class="morado">{</span>
+        <span class="azul">if</span><span class="amarillo">(</span>boxes<span class="amarillo">[</span>i<span class="amarillo">]</span><span class="amarillo">[</span><span class="verde">'l'</span><span class="amarillo">]</span> <span class="morado">&gt;=</span> boxes<span class="amarillo">[</span>i+1<span class="amarillo">]</span><span class="amarillo">[</span><span class="verde">'l'</span><span class="amarillo">]</span> <span class="morado">||</span>
+        boxes<span class="amarillo">[</span>i<span class="amarillo">]</span><span class="amarillo">[</span><span class="verde">'w'</span><span class="amarillo">]</span> <span class="morado">&gt;=</span> boxes<span class="amarillo">[</span>i+1<span class="amarillo">]</span><span class="amarillo">[</span><span class="verde">'w'</span><span class="amarillo">]</span> <span class="morado">||</span>
+        boxes<span class="amarillo">[</span>i<span class="amarillo">]</span><span class="amarillo">[</span><span class="verde">'h'</span><span class="amarillo">]</span> <span class="morado">&gt;=</span> boxes<span class="amarillo">[</span>i+1<span class="amarillo">]</span><span class="amarillo">[</span><span class="verde">'h'</span><span class="amarillo">]</span><span class="amarillo">)</span><span class="azul">{</span>
+            <span class="azul">return</span> false;
+        <span class="azul">}</span>
+    <span class="morado">}</span>
+    <span class="azul">return</span> true;
+<span class="amarillo">}</span>
+
+            </pre>
+        </code>
+    </main>
+    <script src="dia4.js"></script>
+</body>
+</html>

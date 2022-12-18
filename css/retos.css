@@ -43,12 +43,12 @@ code > pre {
     background-color: var(--negro);
     margin-bottom: 1rem;
     overflow-x: auto;
+    line-height: 1.2;
 }
 
 code.solucion_reto pre {
     width: 100%;
     font-size: 1rem;
-    line-height: 1.2;
 }
 
 .morado {
